@@ -1,28 +1,24 @@
 <?php
 
-require_once 'Classes/Person.php';
-require 'Classes/Customer.php';
-require_once 'Classes/Employee.php';
+require_once 'classes/Person.php';
+require_once 'classes/Employee.php';
+require_once 'classes/Customer.php';
 
-$jonas = new Person('Jonas', 'Pedersen', 'jonas@eamil.com');
+$peter = new Person('Peter', 'Jansen', 'pj@mail.com');
 
-// $jonas->firstName = 'Jonas';
-// $jonas->lastName = 'Pedersen';
-// $jonas->email = 'jonas@eamil.com';
+echo $peter->firstName;
 
+$peter->lastName = 'Hansen';
+echo $peter->lastName;
 
-echo $jonas->firstName . '<br>';
-echo $jonas->lastName . '<br>';
-echo $jonas->email . '<br>';
+echo '<hr>';
 
+$jane = new Employee('Jane', 'Johnson', 'jj@mail.com', '2016-02-29');
+echo $jane->firstName;
+echo $jane->employmentDate;
 
+echo '<hr>';
 
-$maria = new Person('Maria', 'Hansen', 'maria@email.com');
-$lise = new Person('Lise', 'Jørgensen', 'lise@email.com');
-
-$line = new Customer('Line', 'Mikkelsen', 'line@email.com', 'KEA', 'line@kea.dk');
-echo $line->companyName;
-
-$wei = new Employee('Wei', 'Yang', 'wei@kea.dk', '');
-
-?>
+$jon = new Customer('Jon', 'Harris', 'jh@mail.com', 'Lego', 'jh@lego.dk');
+echo $jon->firstName;
+echo $jon->companyEmail;
