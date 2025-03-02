@@ -1,24 +1,35 @@
 <?php
 
-require_once 'classes/Person.php';
-require_once 'classes/Employee.php';
-require_once 'classes/Customer.php';
+require_once 'classes/Book.php';
+require_once 'classes/Magazine.php';
+require_once 'classes/DVD.php';
+require_once 'classes/Library.php';
 
-$peter = new Person('Peter', 'Jansen', 'pj@mail.com');
+try {
+    $library = new Library();
 
-echo $peter->firstName;
+    $book = new Book('The Great Gatsby', 'F. Scott Fitzgerald', 1925, '9783161484100', 180);
+    $magazine = new Magazine('National Geographic', 'Various', 2024, 120, 'NatGeo Publishing');
+    $dvd = new DVD('Inception', 'Christopher Nolan', 2010, 148, 'Blu-ray');
 
-$peter->lastName = 'Hansen';
-echo $peter->lastName;
+    $library->addItem($book);
+    $library->addItem($magazine);
+    $library->addItem($dvd);
 
-echo '<hr>';
+    echo '<strong>Library Items:</strong><br>';
+    echo $library->getItems();
 
-$jane = new Employee('Jane', 'Johnson', 'jj@mail.com', '2016-02-29');
-echo $jane->firstName;
-echo $jane->employmentDate;
+    echo '<br>Borrowing \'The Great Gatsby\'...<br><br>';
+    $book->borrow();
 
-echo '<hr>';
+    echo '<strong>Updated Library Items:</strong><br>';
+    echo $library->getItems();
 
-$jon = new Customer('Jon', 'Harris', 'jh@mail.com', 'Lego', 'jh@lego.dk');
-echo $jon->firstName;
-echo $jon->companyEmail;
+    echo '<br>Returning \'The Great Gatsby\'...<br><br>';
+    $book->returnItem();
+
+    echo '<strong>Final Library State:</strong><br>';
+    echo $library->getItems();
+} catch (Exception $e) {
+    echo 'Error: ' . $e->getMessage();
+}
